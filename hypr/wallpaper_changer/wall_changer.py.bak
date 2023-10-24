@@ -1,0 +1,18 @@
+import os
+import random
+import sys
+
+USER=sys.argv[1]
+
+# path_to_wall_directory=f"/home/{USER}/Pictures/.wallpaper/"
+path_to_wall_directory=sys.argv[2]
+
+cmd=f"""
+#!/bin/bash 
+swww img {path_to_wall_directory}{random.choices(os.listdir(path_to_wall_directory))[0]}  --transition-type any
+"""
+
+path_sr=f"/home/{USER}/.config/hypr/wallpaper_changer/change_wall.sh"
+with open(path_sr, "w") as f:
+    f.write(cmd)
+    f.close()
